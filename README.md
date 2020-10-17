@@ -52,22 +52,26 @@ Base URL for deployed API(updating...): https://bw-rw-funding.herokuapp.com/
 # **Database skeleton** : 
 
 ```
-projects = [
-    {
+projects = [   {
       id: 1,
-      project_name: "Astro",
-      project_founder: "Name",
-      project_description: "What do you write in a Astro project description?",
-    } 
+      project_id: 1,
+      project_name: "Astro App - Translate Sign Language ",
+      project_founder: "Astrofolic",
+      project_description: "What do you write in a Astro project description",
+      project_goal: "$10,000.00",
+    },
       ]
   ```
   
   ```
 funding = [
     {
-      id: 1,
-      project_name: "Astro",
-      project_raised: 50,
+    id: 1,
+      funding_id: 1,
+      project_id: 1,
+      project_name: "Astro App - Translate Sign Language ",
+      project_description: "What do you write in a Astro project description",
+      project_raised: "$2,670.00"
     }    
       ]
    ```
@@ -75,9 +79,11 @@ funding = [
   ```      
 fundraisers = [ //who is users
     {
-      id: 1,
-      fundraiser_name: "Clean Database",
-   password: "password"  
+      user_id: 1,
+      firstname: "user",
+      lastname: "user",
+      password:"", 
+      role:"",
     }  
    ]
 ```      
