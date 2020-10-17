@@ -17,6 +17,7 @@ exports.up = function (knex, Promise) {
       .notNullable()
       .references("project_name")
       .inTable("projects");
+      
 
     tbl
       .text("project_description", 250)
@@ -30,8 +31,8 @@ exports.up = function (knex, Promise) {
       .decimal("project_raised", 65, 2) // numbers are allow after decimal, max size 65
       .unique()
       .notNullable()
-      .references("id")
-      .inTable("funding")
+      .references("project_id")
+      .inTable("projects")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
   });
