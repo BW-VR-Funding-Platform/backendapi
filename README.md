@@ -2,7 +2,7 @@
  
 ## Documentation
 
-Base URL for deployed API(updating...): https://buildweek-vr-funding-platform.herokuapp.com/
+Base URL for deployed API(updating): https://buildweek-vr-funding-platform.herokuapp.com/
 
 ## **Endpoints**
 
