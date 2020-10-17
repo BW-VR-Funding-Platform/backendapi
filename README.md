@@ -13,7 +13,7 @@ Base URL for deployed API(updating...): https://bw-rw-funding.herokuapp.com/
 | POST | /api/ | create a new project | X | - |
 | GET | /api/projects | get information of all projects  | X | - |
 | GET | /api/projects/:id | gets a specific project by id | X | - |
-| PUT | /api/projects/:id | edit a strain | X | X |
+| PUT | /api/projects/:id | edit a project | X | X |
 | DELETE | /api/projects/:id | delete a project from database | X | X |
 
 
