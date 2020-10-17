@@ -18,8 +18,8 @@ Base URL for deployed API(updating...): https://bw-rw-funding.herokuapp.com/
 
 
 ## **Table Requirements**
-testing
-## **Fundraiser (Users)**
+
+# **Fundraiser (Users)**
 
 | Name | Type | Required | Unique | Notes |
 |------|------|----------|--------|-------|
