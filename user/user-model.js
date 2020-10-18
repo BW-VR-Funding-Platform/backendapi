@@ -8,30 +8,30 @@ module.exports = {
 };
 
 function find() {
-  return db("users").select("id", "firstname", "lastname").orderBy("id");
+  return db("users").select("user_id", "firstname", "lastname").orderBy("user_id");
 }
 
 function findBy(filter) {
   return db("users as u")
-    .join("roles as r", "u.role", "r.id")
+    .join("roles as r", "u.role", "r.user_id")
     .where(filter)
-    .select("u.id", "u.firstname", "u.lastname", "u.password", "r.name as role")
-    .orderBy("u.id");
+    .select("u.user_id", "u.firstname", "u.lastname", "u.password", "r.name as role")
+    .orderBy("u.user_id");
 }
 
 async function add(firstname, lastname) {
   try {
-    const [id] = await db("firstname, lastname").insert(
+    const [user_id] = await db("users").insert(
       firstname,
       lastname,
-      "id"
+      "user_id"
     );
-    return findById(id);
+    return findById(user_id);
   } catch (error) {
     throw error;
   }
 }
 
-function findById(id) {
-  return db("users").where({ id }).first();
+function findById(user_id) {
+  return db("users").where({ user_id }).first();
 }
