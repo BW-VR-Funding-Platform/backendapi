@@ -13,7 +13,6 @@ function find() {
 
 function findBy(filter) {
   return db("users as u")
-    .join("projects as r", "u.role", "r.project_id")
     .where(filter)
     .select("u.user_id", "u.firstname", "u.lastname", "u.password")
     .orderBy("u.user_id");
