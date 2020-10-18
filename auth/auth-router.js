@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");
 
 const Users = require("../user/user-model")
-const restricted = require("./restricted-mw")
+
 const config = require('../api/config');
 const { isValid } = require("../user/user-service");
 
@@ -22,7 +22,7 @@ router.post("/register", (req, res) => {
       //save user to dBase
       Users.add(users)
         .then(user => {
-          res.status(201).json({ firstname: user.firstname, lastname: user.lastname 
+          res.status(201).json({ user: user.firstname 
           });
         })
         .catch((err) => {
@@ -58,7 +58,8 @@ router.post("/register", (req, res) => {
   function getJwt(user) {
     const payload = {
       role: user.id,
-      username: user.username,
+    user: user.firstname,
+    user: user.lastname
     };
     const jwtTime = {
       expiresIn: "12h",

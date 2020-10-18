@@ -2,7 +2,7 @@
 const router = require("express").Router();
 
 const Users = require("../user/user-model");
-const restricted = require("../auth/restricted-middleware.js");
+const restricted = require("../auth/restricted-mw");
 
 router.get("/", restricted, checkRole("user"), (req, res) => {
     Users.find()
@@ -21,3 +21,5 @@ function checkRole(role) {
         }
     };
 }
+
+module.exports = router;
