@@ -8,7 +8,9 @@ module.exports = {
 };
 
 function find() {
-  return db("users").select("user_id", "firstname", "lastname").orderBy("user_id");
+  return db("users")
+    .select("user_id", "firstname", "lastname")
+    .orderBy("user_id");
 }
 
 function findBy(filter) {
@@ -20,11 +22,7 @@ function findBy(filter) {
 
 async function add(firstname, lastname) {
   try {
-    const [user_id] = await db("users").insert(
-      firstname,
-      lastname,
-      "user_id"
-    );
+    const [user_id] = await db("users").insert(firstname, lastname, "user_id");
     return findById(user_id);
   } catch (error) {
     throw error;
