@@ -49,6 +49,61 @@ Base URL for deployed API(updating...): https://bw-rw-funding.herokuapp.com/
 | project_description | text | yes | no | information about this project|
 | project_raised | decimal | yes | no | - | 
 
+# Request and Return 
+
+### POST /api/auth/register
+
+ ---Request Body 
+```
+{   
+    "firstname": "Evie",
+    "lastname": "Levie",
+    "password": "passwords"
+}
+
+```
+
+---Return 
+```
+{
+    "message": "Welcome! Your account sucessfully registered",
+    "data": {
+        "user_id": 25,
+        "firstname": "Evie",
+        "lastname": "Levie",
+        "password": "$2a$08$Zvy5EH/BKN28kspTTkzLyeS6ikjuoKBA8NRgCNIHGGHWyF8HvnP1q",
+        "role": 0
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoyNSwiZmlyc3RuYW1lIjoiRXZpZSIsImxhc3RuYW1lIjoiTGV2aWUiLCJpYXQiOjE2MDMwNDg2OTEsImV4cCI6MTYwMzA5MTg5MX0.FQu8UVtAsLvhHr-vtj1w1gkfz9QGoLAxSGNYOwV_vxE"
+}
+
+```
+### POST /api/auth/register
+
+---Request body 
+
+```
+{   
+    "firstname": "Evie",
+    "lastname": "Levie",
+    "password": "passwords"
+}
+```
+--- Return
+
+```
+{
+    "message": "Welcome, it's Virtual Reality Funding Platform ",
+    "user": {
+        "user_id": 22,
+        "firstname": "Evie",
+        "lastname": "Levie",
+        "password": "$2a$08$98dK8S27AlD4/IxC8QhPTezhbeEzY2hgjVd2zS6gr0Ui.aItaeaH2"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoyMiwiZmlyc3RuYW1lIjoiRXZpZSIsImxhc3RuYW1lIjoiTGV2aWUiLCJpYXQiOjE2MDMwNDg5NTMsImV4cCI6MTYwMzA5MjE1M30.Z8AlXbDQ55g2eGkys0NJ0m-5FTy700qwlGCx_JRcs1k"
+}
+
+```
 # **Database skeleton** : 
 
 ```
