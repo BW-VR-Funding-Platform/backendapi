@@ -38,8 +38,9 @@ router.post("/register", (req, res) => {
 router.post("/login", (req, res) => {
   const { firstname, lastname, password } = req.body;
   // implement login
-  Users.findBy({ firstname, lastname })
-    .then((user) => {
+  if (isValid(req.body)) {
+  Users.findBy({firstname, lastname})
+    .then(([user]) => {
       // compare password & hash stored in db
       if (user && bcryptjs.compareSync(password, user.password)) {
         const token = getJwt(user);
@@ -49,7 +50,7 @@ router.post("/login", (req, res) => {
             message: "Welcome, it's Virtual Reality Funding Platform ",
             user,
             token,
-          });
+          })
       } else {
         res.status(401).json({ message: "Invalid user" });
       }
@@ -58,7 +59,12 @@ router.post("/login", (req, res) => {
       console.log(err);
       res.status(500).json({ message: err.message });
     });
-});
+  } else {
+    res.status(400).json({
+      message: "Please provide username and password and the password shoud be alphanumeric",
+    })
+  }
+})
 
 function getJwt(user) {
   const payload = {
