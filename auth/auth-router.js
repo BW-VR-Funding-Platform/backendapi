@@ -7,6 +7,7 @@ const Users = require("../user/user-model");
 
 const config = require("../api/config");
 const { isValid } = require("../user/user-service");
+const { token } = require("morgan");
 
 router.post("/register", (req, res) => {
   // implement registration
@@ -20,9 +21,10 @@ router.post("/register", (req, res) => {
     //save user to dBase
     Users.add(users)
       .then((user) => {
+        const token = getJwt(user)
         res
           .status(201)
-          .json({ firstname: user.firstname })
+          .json({ message:"Welcome! Your account sucessfully registered", data:user,token })
       })
       .catch((err) => {
         res.status(500).json({ message: err.message });
