@@ -8,8 +8,8 @@ module.exports = {
     remove
   };
 
-  function find(){
-
+  function find(data){
+    return db(data)
   }
   function add(){
 
@@ -24,5 +24,5 @@ module.exports = {
 
   }
   function remove(){
-      
+
   }

@@ -3,8 +3,14 @@ const router = require('express').Router();
 const model = require('./projmodel');
 
 
-router.get('/', (req,res) =>{
-    model.find()
+router.get('/', (res, req) =>{
+    model.find('projects')
+    .then(res =>{
+        req.status(200).json(res)
+    })
+    .catch(err =>{
+        res.status(500).json({error : err})
+    })
 })
 
 router.get('/:id', (req, res)=>{
