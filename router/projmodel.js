@@ -12,15 +12,23 @@ function find(data) {
   return db(data);
 }
 
-function add(data) {
-  return db(data)
-    .insert(data)
+// function add(project) {
+//   return db('projects')
+//     .insert(project)
+//     .then(ids =>( {
+//       id: ids[0]
+//     }))
+//   // .catch(err =>{
+//   //   return null
+//   // })
+// }
+
+function add(newObj) {
+  return db('projects')
+    .insert(newObj)
     .then((id) => {
-      return findById(id);
+      return findById(id[0], projects);
     });
-  // .catch(err =>{
-  //   return null
-  // })
 }
 
 function findById(id) {
@@ -36,19 +44,12 @@ function findById(id) {
 }
 
 function findBy(filter) {
-  return db('users').where(filter).orderBy('id')
+  return db("projects").where(filter).orderBy("id");
 }
-function update(change, id, data) {
-  return db(data)
-  .update(change)
-  .where({ id })
-  .then(() =>{
-    return findById(id, data)
-  })
+function update(id, projects) {
+  return db("projects").where("id", Number(id)).update(projects);
 }
 
 function remove(id) {
-  return db("projects")
-    .where("id", id)
-    .del();
+  return db("projects").where("id", id).del();
 }
