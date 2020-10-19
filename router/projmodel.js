@@ -1,7 +1,6 @@
 const db = require("../data/knexconfig");
 module.exports = {
   find,
-  add,
   findById,
   findBy,
   update,
@@ -12,33 +11,31 @@ function find(data) {
   return db(data);
 }
 
-function add(data) {
-  return db(data)
-    .insert(data)
-    .then((id) => {
-      return findById(id);
-    });
-}
-
 function findById(id, data) {
   return db(data)
+    .select(
+      "id",
+      "project_id",
+      "project_name",
+      "project_founder",
+      "project_description",
+      "project_goal"
+    )
     .where({ id })
-    // .then(project => {
-    //   if (!project.length) {
-    //     return null;
-    //   } else {
-    //     return projects;
-    //   }
-    // });
-    .first()
+    .first();
 }
+
+
 
 function findBy(filter) {
   return db("projects").where(filter).orderBy("id");
 }
 
-function update(id, projects) {
-  return db("projects").where("id", Number(id)).update(projects);
+function update(changes,id) {
+  return db("projects")
+  
+    .where({ id })
+    .update(changes); //updates the record with 'changes' where the id matches
 }
 
 function remove(id) {
