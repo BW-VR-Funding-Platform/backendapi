@@ -61,12 +61,15 @@ router.put("/:id", (req, res) => {
   });
 });
 
+
+
 router.delete('/:id', (req, res) => {
     const id = req.params.id
     model.remove(id)
     .then(res => res.status(200).json({message:'This project was successfully deleted', res}))
     .catch(err => res.status(500).json({error: 500, err}))
-  });
+  }); // worked! 
+  
 
 // function checkRole(role) {
 //   return function (req, res, next) {
@@ -76,6 +79,5 @@ router.delete('/:id', (req, res) => {
 //       res.status(403).json({ message: "you have no access" });
 //     }
 //   };
-}
 
 module.exports = router;
