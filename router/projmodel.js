@@ -12,40 +12,31 @@ function find(data) {
   return db(data);
 }
 
-// function add(project) {
-//   return db('projects')
-//     .insert(project)
-//     .then(ids =>( {
-//       id: ids[0]
-//     }))
-//   // .catch(err =>{
-//   //   return null
-//   // })
-// }
-
-function add(newObj) {
-  return db('projects')
-    .insert(newObj)
+function add(data) {
+  return db(data)
+    .insert(data)
     .then((id) => {
-      return findById(id[0], projects);
+      return findById(id);
     });
 }
 
-function findById(id) {
-  return db("projects")
+function findById(id, data) {
+  return db(data)
     .where({ id })
-    .then((projects) => {
-      if (!projects.length) {
-        return null;
-      } else {
-        return projects;
-      }
-    });
+    // .then(project => {
+    //   if (!project.length) {
+    //     return null;
+    //   } else {
+    //     return projects;
+    //   }
+    // });
+    .first()
 }
 
 function findBy(filter) {
   return db("projects").where(filter).orderBy("id");
 }
+
 function update(id, projects) {
   return db("projects").where("id", Number(id)).update(projects);
 }
