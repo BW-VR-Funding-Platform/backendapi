@@ -106,6 +106,7 @@ Headers
 
 --- Return
 
+
 ```
 [
     {
@@ -150,7 +151,33 @@ Headers
     }
 ]
 ```
+### GET /api/projects/:id
 
+--- Request
+
+```
+Headers
+
+| Key |         |                 Value                          |
+|Authorization| | 'valid token here' |
+
+```
+
+--- Return
+
+```
+{
+    "message": "This is information of project with specific ID",
+    "project": {
+        "id": 4,
+        "project_id": 4,
+        "project_name": "Project X App - Travel Vision ",
+        "project_founder": "Iron",
+        "project_description": "What do you write in Project X  project description",
+        "project_goal": "$35,00.00"
+    }
+}
+```
 # **Database skeleton** :
 
 ```

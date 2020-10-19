@@ -13,53 +13,47 @@ router.get("/", (res, req) => {
     });
 });
 
+
 router.get("/:id", (req, res) => {
-  const { id } = req.params;
-
+  const id = req.params.id;
   model
-    .findById(id)
-    .then((project) => {
-      if (project) {
-        res.json(project);
-      } else {
-        res
-          .status(404)
-          .json({ message: "Could not find project with given id." });
+    .findById(id, "projects")
+    .then((project) =>
+      res
+        .status(200)
+        .json({
+          message: "This is information of project with specific ID",
+          project,
+        })
+    )
+    .catch((err) => res.status(500).json({ status: 500, err }));
+});
+
+
+
+// UPDATE post
+router.put('/:id', (req,res) =>{
+  const {id} = req.params;
+  const changes = req.body;
+
+  model.findById(id,'projects')
+  .then(project =>{
+
+      if(project){
+          model.update(changes, id)
+          .then(updated =>{
+              res.status(201).json({success:'Project information is updated',...changes, id: project.id, UpdatingInformation: updated})
+          })
+      }else{
+          res.status(401).json({message: `Could Not Find Oroject With ID: ${id}`, error: err})
       }
-    })
-    .catch((err) => {
-      res.status(500).json({
-        message: "500 error status ! Failed to get project information",
-      });
+     
+  }).catch(err => {
+    console.log(err)
+      res.status(500).json({ message: 'Failed To Update Project', errormessage: err });
     });
-});
-//done
+})
 
-router.post("/", (req, res) => {
-  const data = req.body;
-  model
-    .add(data)
-    .then((res) => {
-      res.status(201).json({message: "Project is successfully created", res});
-    })
-    .catch((err) => {
-      res.status(500).json({ message: "Failed to create new project" }, err);
-    });
-});
-
-
-router.put("/:id", (req, res) => {
-  const { id } = req.params;
-  const body = req.body;
-  model.update(id, body).then((res) => {
-    res
-      .status(200)
-      .json({ message: "Project is updated successfully", res })
-      .catch((err) => {
-        res.status(500).json({ error: err });
-      });
-  });
-});
 
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
@@ -73,13 +67,14 @@ router.delete("/:id", (req, res) => {
     .catch((err) => res.status(500).json({ error: 500, err }));
 }); // worked!
 
-// function checkRole(role) {
-//   return function (req, res, next) {
-//     if (req.jwt.role === role) {
-//       next();
-//     } else {
-//       res.status(403).json({ message: "you have no access" });
-//     }
-//   };
-// }
+function checkRole(role) {
+  return function (req, res, next) {
+    if (req.jwt.role === role) {
+      next();
+    } else {
+      res.status(403).json({ message: "you have no access" });
+    }
+  };
+}
+
 module.exports = router;
