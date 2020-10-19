@@ -17,7 +17,7 @@ server.use(cors());
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", userRouter);
-server.use("/api/projects",restrictedMw, projRouter);
+server.use("/api/projects", restrictedMw, projRouter);
 
 
 server.get("/", (req, res) => {
