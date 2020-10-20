@@ -79,7 +79,7 @@ router.put("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
   model
     .remove(id)
     .then((res) =>
