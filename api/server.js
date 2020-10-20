@@ -1,4 +1,4 @@
-require("dotenv").config();
+
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
@@ -33,7 +33,7 @@ server.use("/api/funding", fundRouter);
 
 
 server.get("/", (req, res) => {
-  res.status(200).json({ api: "Hi!Welcome to Virtual Reality Funding Platform" })  
+  res.status(200).json({ api:"Hi!Welcome to Virtual Reality Funding Platform"})  
 });
 
 module.exports = server;
