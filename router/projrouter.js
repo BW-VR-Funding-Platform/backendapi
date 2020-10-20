@@ -1,7 +1,8 @@
 const router = require("express").Router();
-
+const express = require("express");
 const model = require("./projmodel");
 
+//GET all projects
 router.get("/", (res, req) => {
   model
     .find("projects")
@@ -13,47 +14,69 @@ router.get("/", (res, req) => {
     });
 });
 
-
+//GET projects by id
 router.get("/:id", (req, res) => {
   const id = req.params.id;
   model
     .findById(id, "projects")
     .then((project) =>
-      res
-        .status(200)
-        .json({
-          message: "This is information of project with specific ID",
-          project,
-        })
+      res.status(200).json({
+        message: "This is information of project with specific ID",
+        project,
+      })
     )
     .catch((err) => res.status(500).json({ status: 500, err }));
 });
 
+//UPDATE new project
 
 
-// UPDATE post
-router.put('/:id', (req,res) =>{
-  const {id} = req.params;
-  const changes = req.body;
-
-  model.findById(id,'projects')
-  .then(project =>{
-
-      if(project){
-          model.update(changes, id)
-          .then(updated =>{
-              res.status(201).json({success:'Project information is updated',...changes, id: project.id, UpdatingInformation: updated})
-          })
-      }else{
-          res.status(401).json({message: `Could Not Find Oroject With ID: ${id}`, error: err})
-      }
-     
-  }).catch(err => {
+router.post('/', (req, res) =>{
+  let newPro = req.body;
+  model.insert(newPro).then(newPro=>{
+      res.status(200).json({message :" New Project is updated",newPro})
+  })
+  .catch(err=>{
     console.log(err)
-      res.status(500).json({ message: 'Failed To Update Project', errormessage: err });
-    });
+      res.status(500).json({message: 'Failed To Add New Project', postSent: newPro, errormessage:err})
+  })
 })
 
+// UPDATE project information
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+
+  model
+    .findById(id, "projects")
+    .then((project) => {
+      if (project) {
+        model.update(changes, id).then((updated) => {
+          res
+            .status(201)
+            .json({
+              success: "Project information is updated",
+              ...changes,
+              id: project.id,
+              UpdatingInformation: updated,
+            });
+        });
+      } else {
+        res
+          .status(401)
+          .json({
+            message: `Could Not Find Oroject With ID: ${id}`,
+            error: err,
+          });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res
+        .status(500)
+        .json({ message: "Failed To Update Project", errormessage: err });
+    });
+});
 
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
