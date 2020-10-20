@@ -33,7 +33,7 @@ server.use("/api/funding", fundRouter);
 
 
 server.get("/", (req, res) => {
-  res.json({ api: "Hi!Welcome to Virtual Reality Funding Platform" })  
+  res.status(200).json({ api: "Hi!Welcome to Virtual Reality Funding Platform" })  
 });
 
 module.exports = server;
