@@ -1,6 +1,5 @@
 // Update with your config settings.
-const pgConnection = process.env.DATABASE_URL
-"postgresql://postgres@localhost/projects"
+
 require("dotenv").config(); //access to .env variables
 module.exports = {
   development: {
