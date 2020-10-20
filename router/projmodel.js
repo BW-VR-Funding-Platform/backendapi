@@ -41,7 +41,6 @@ function findBy(filter) {
 //update new infor of pj to db
 function update(changes,id) {
   return db("projects")
-  
     .where({ id })
     .update(changes); //updates the record with 'changes' where the id matches
 }
