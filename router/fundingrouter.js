@@ -1,5 +1,5 @@
 const funds = require("express").Router();
-// const express = require("express");
+
 const fundmodel = require("./fundingmodel");
 
 //GET all the funding informations
@@ -14,3 +14,5 @@ funds.get("/", (res, req) => {
       res.status(500).json({ errormessage: err });
     });
 });
+
+module.exports = funds;

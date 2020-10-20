@@ -3,6 +3,8 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const morgan = require ("morgan");
+// const session = require('express-session')
+
 
 //router
 const authRouter = require("../auth/auth-router");
@@ -13,12 +15,14 @@ const restrictedMw = require("../auth/restricted-mw");
 
 //server
 const server = express();
+// server.use(session(sessionConfig));
 
 //middleware
 server.use(express.json());
 server.use("/",helmet());
 server.use("/", morgan("---testing for creating API sprint---"));
 server.use(cors());
+
 
 //routers
 server.use("/api/auth", authRouter);
