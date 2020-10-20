@@ -18,10 +18,10 @@ const server = express();
 // server.use(session(sessionConfig));
 
 //middleware
+server.use(cors()); // cors should go first!!!
 server.use(express.json());
 server.use("/",helmet());
 server.use("/", morgan("---testing for creating API sprint---"));
-server.use(cors());
 
 
 //routers
