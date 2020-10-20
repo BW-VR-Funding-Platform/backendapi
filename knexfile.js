@@ -7,18 +7,27 @@ const pgConnection =
 
 module.exports = knex(pgConnection);
 module.exports = {
+  //development
   development: {
-    client: "sqlite3", 
-    useNullAsDefault: true,
+    client: 'sqlite3',
+    useNullAsDefault: true, 
     connection: {
-      filename: "./data/project.db3",
-      migrations: {
-        directory: "./migrations",
-      },
-      seed: {
-        directory: "./seeds",
+      filename: './data/project.db3',
+    },
+    migrations: {
+      directory: '.migrations'
+    },
+    seeds:{
+      directory: './seeds'
+    },
+    // needed when using foreign keys
+    pool: {
+      afterCreate: (conn, done) => {
+        // runs after a connection is made to the sqlite engine
+        conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
       },
     },
+    
   },
 
   staging: {
@@ -38,16 +47,11 @@ module.exports = {
   },
 
   production: {
-    client: "postgresql",
-    useNullAsDefault: true,
+    client: 'postgresql',
     connection: {
-      filename: "./data/project.db3",
-    },
-    migrations: {
-      directory: "./migrations",
-    },
-    seed: {
-      directory: "./seeds",
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
     },
 
     pool: {
