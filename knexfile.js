@@ -12,7 +12,7 @@ module.exports = {
       filename: "./data/project.db3",
     },
     migrations: {
-      directory: ".migrations",
+      directory: "./migrations",
     },
     seeds: {
       directory: "./seeds",
@@ -50,15 +50,12 @@ module.exports = {
     migrations: {
       directory: "./migrations",
     },
-    migrations: {
-      directory: "./migrations",
+    seeds:{
+      directory: "./seeds",
     },
     pool: {
       min: 2,
       max: 10,
-    },
-    migrations: {
-      tableName: "knex_migrations",
     },
   },
 };
