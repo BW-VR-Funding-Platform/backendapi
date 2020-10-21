@@ -18,7 +18,7 @@ function findById(id, data) {
   return db(data)
     .select(
       "id",
-      "project_id",
+   
       "project_name",
       "project_founder",
       "project_description",
@@ -30,7 +30,7 @@ function findById(id, data) {
 
 //Insert new project to db
 async function insert(newPro) {
-  return await db('projects').insert(newPro).returning(['id',' project_id','project_name','project_founder','project_description','project_goal']);
+  return await db('projects').insert(newPro).returning(['id','project_name','project_founder','project_description','project_goal']);
 }
 
 

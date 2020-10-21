@@ -2,13 +2,12 @@ exports.up = function (knex, Promise) {
   return knex.schema.createTable("funding", (tbl) => {
     tbl.increments("id"); // id
 
-    tbl.integer("funding_id").unsigned().notNullable();
 
     tbl
       .integer("project_id")
       .unsigned()
       .notNullable()
-      .references("project_id")
+      .references("id")
       .inTable("projects");
 
     tbl
@@ -17,7 +16,6 @@ exports.up = function (knex, Promise) {
       .notNullable()
       .references("project_name")
       .inTable("projects");
-      
 
     tbl
       .text("project_description", 250)
@@ -31,7 +29,7 @@ exports.up = function (knex, Promise) {
       .decimal("project_raised", 65, 2) // numbers are allow after decimal, max size 65
       .unique()
       .notNullable()
-      .references("project_id")
+      .references("id")
       .inTable("projects")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
