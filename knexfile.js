@@ -47,9 +47,6 @@ module.exports = {
     useNullAsDefault: true,
     // client: "postgresql",
     client: "pg",
-    connection: {
-      filename: "./data/project.db3",
-    },
     migrations: {
       directory: "./migrations",
     },
