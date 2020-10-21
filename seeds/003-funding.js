@@ -5,21 +5,21 @@ exports.seed = function (knex) {
       project_id: 1,
       project_name: "Astro App - Translate Sign Language ",
       project_description: "What do you write in a Astro project description",
-      project_raised: "$2,670.00",
+      project_raised: 26700
     },
     {
       id: 2,
       project_id: 2,
       project_name: "Stark App - Healthcare",
       project_description: "What do you write in  Stark project description",
-      project_raised: "$5,645.00",
+      project_raised: 564500
     },
     {
       id: 3,
       project_id: 3,
       project_name: "Skyhawks App - Virtual Assistant ",
       project_description: "What do you write in  Skyhawks project description",
-      project_raised: "$6,234.00",
+      project_raised: 6234.00
     },
     {
       id: 4,
@@ -27,14 +27,14 @@ exports.seed = function (knex) {
       project_name: "Project X App - Travel Vision ",
       project_description:
         "What do you write in Project X  project description",
-      project_raised: "$7,314.00",
+      project_raised: 731400
     },
     {
       id: 5,
       project_id: 5,
       project_name: "Cascade App- Virtual Shopping",
       project_description: "What do you write in Cascade project description ",
-      project_raised: "$8,285.00",
+      project_raised: 828500
     },
   ];
 
