@@ -6,6 +6,13 @@ exports.seed = function (knex) {
       password:"", 
       role: 1,
     },
+    {
+      firstname: "edd",
+      lastname: "bummings",
+      password:"password", 
+      role: 1,
+    },
+
   ];
 
   // Inserts seed entries
