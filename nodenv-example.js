@@ -1,0 +1,1 @@
+console.log('The value for API is:', process.env.API);

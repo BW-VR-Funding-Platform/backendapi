@@ -69,7 +69,7 @@ function getJwt(user) {
     lastname: user.lastname
   };
   const jwtTime = {
-    expiresIn: "24h",
+    expiresIn: "30h",
   };
   return jwt.sign(payload, config.jwtSecret, jwtTime);
 }
