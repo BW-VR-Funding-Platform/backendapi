@@ -10,7 +10,6 @@ exports.up = function (knex) {
 
     tbl
       .decimal("project_goal", 65, 2) // numbers are allow after decimal, max size 65
-
       .notNullable();
   });
 }; // close for `.up`

@@ -18,7 +18,6 @@ function findById(id, data) {
   return db(data)
     .select(
       "id",
-   
       "project_name",
       "project_founder",
       "project_description",
