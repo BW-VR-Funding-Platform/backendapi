@@ -4,10 +4,12 @@ const helmet = require("helmet");
 const cors = require("cors");
 const morgan = require ("morgan");
 const session = require('express-session');
+const KnexSessionStore = require('connect-session-knex')(session);
+const configsecret = require('./config')
 
 const sessionConfig = {
   name: 'backendapiWR',
-  secret: secrets.jwtSecret,
+  secret: configsecret.jwtSecret,
   resave: false, 
   saveUninitialized: true,
   cookie: {
@@ -16,7 +18,7 @@ const sessionConfig = {
       httpOnly: true,
   },
   store: new KnexSessionStore({
-      knex: require('./data/knexconfig'),
+      knex: require('../data/knexconfig'),
       tablename: 'sessions',
       sidfieldname: 'sid',
       createtable: true,
@@ -32,6 +34,7 @@ const userRouter = require("../user/user-router");
 const projRouter = require("../router/projrouter");
 const fundRouter = require("../router/fundingrouter");
 const restrictedMw = require("../auth/restricted-mw");
+
 
 //server
 const server = express();
