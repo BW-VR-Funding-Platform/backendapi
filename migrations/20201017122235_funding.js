@@ -1,40 +1,30 @@
-exports.up = function (knex, Promise) {
+exports.up = function (knex) {
   return knex.schema.createTable("funding", (tbl) => {
     tbl.increments("id"); // id
-
-
     tbl
       .integer("project_id")
-      .unsigned()
       .notNullable()
-      .references("id")
-      .inTable("projects");
+      // .references("id")
+      // .inTable("projects");
 
     tbl
       .string("project_name")
-      .unique()
       .notNullable()
-      .references("project_name")
-      .inTable("projects");
+      // .references("project_name")
+      // .inTable("projects");
 
     tbl
       .text("project_description", 250)
       .notNullable()
-      .unsigned()
-      .notNullable()
-      .references("project_description")
-      .inTable("projects");
+      // .references("project_description")
+      // .inTable("projects");
 
     tbl
       .decimal("project_raised", 65, 2) // numbers are allow after decimal, max size 65
       .unique()
-      .notNullable()
-      .references("id")
-      .inTable("projects")
-      .onUpdate("CASCADE")
-      .onDelete("CASCADE");
+      .notNullable();
   });
 }; // close for `.up`
-exports.down = function (knex, Promise) {
+exports.down = function (knex) {
   return knex.schema.dropTableIfExists("funding");
 };
