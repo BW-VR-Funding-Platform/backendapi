@@ -29,7 +29,7 @@ server.use("/", morgan("---testing for creating API sprint---"));
 server.use("/api/auth", authRouter);
 server.use("/api/users", userRouter);
 server.use("/api/projects",restrictedMw, projRouter);
-server.use("/api/funding", fundRouter);
+server.use("/funding", fundRouter);
 
 
 

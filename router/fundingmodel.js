@@ -1,7 +1,7 @@
 const db = require("../data/knexconfig");
 module.exports = {
     find,
-    // findById,
+    findById,
     update,
   };
 
@@ -10,20 +10,19 @@ function find(funding) {
     return db("funding");
   }
 
-  //find funding by id
-// function findById(id, data) {
-//     return db(data)
-//       .select(
-//         "id",
-//         "funding_id",
-//         "project_id",
-//         "project_name",
-//         "project_description",
-//         "project_raised"
-//       )
-//       .where({ id })
-//       .first();
-//   }
+  // find funding by id
+function findById(id, data) {
+    return db("funding")
+      .select(
+        "id",
+        "project_id",
+        "project_name",
+        "project_description",
+        "project_raised"
+      )
+      .where({ id })
+      .first();
+  }
   
   //update new infor of pj to db
   function update(changes,id) {

@@ -31,7 +31,7 @@ router.post("/register", (req, res) => {
       });
   } else {
     res.status(400).json({
-      message:
+      errmessage:
         "Please provide your firstname and lastname an password to regist ",
     });
   }
