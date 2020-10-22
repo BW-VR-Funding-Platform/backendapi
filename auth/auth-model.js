@@ -11,15 +11,19 @@ function find() {
     .orderBy("user_id");
 }
 
-function add(users) {
-  return db("users")
-    .insert(users)
-    .then((id) => {
-      return db("users").where({ id: id[0] }).first();
-    })
-    .catch((err) => {
-      return err;
-    });
+// function add(users) {
+//   return db("users")
+//     .insert(users)
+//     .then((id) => {
+//       console.log(id)
+//       return db("users").where({ id: id[0] }).first();
+//     })
+//     .catch((err) => {
+//       return err;
+//     });
+// }
+function add(user) {
+  return  db('users').insert(user).returning(['id','firstname','lastname','password','role']);
 }
 
 function findById(user_id) {
