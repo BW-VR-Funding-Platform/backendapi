@@ -280,14 +280,53 @@ Headers
     ]
 }
 ```
+### GET/api/funding/:id
 
-### PUT/api/funding:id
+---Request 
+
+```
+https://funding-platform-bw.herokuapp.com/funding/1
+
+```
+---Return 
+
+```
+{
+    "success": "Project information is updated",
+    "id": 1,
+    "project_id": 1,
+    "project_name": "Astro App - Translate Sign Language Editted ",
+    "project_description": "What do you write in a Astro project description",
+    "project_raised": 30000,
+    "UpdatingInformation": 1
+}
+ 
+```
+### PUT/api/funding/:id
 
 ---Request
 ```
+{
+"id": 1,
+"project_id": 1,
+"project_name": "Astro App - Translate Sign Language Editted ",
+"project_description": "What do you write in a Astro project description",
+"project_raised": 30000
+}
+
 ```
 ---Return
 ```
+{
+    "success": "Project information is updated",
+    "id": 1,
+    "project_id": 1,
+    "project_name": "Astro App - Translate Sign Language Editted ",
+    "project_description": "What do you write in a Astro project description",
+    "project_raised": 30000,
+    "UpdatingInformation": 1
+}
+
 ```
 
 # **Database skeleton** :

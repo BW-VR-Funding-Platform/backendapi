@@ -21,10 +21,10 @@ router.post("/register", (req, res) => {
     //save user to dBase
     Users.add(users)
       .then((user) => {
-        const token = getJwt(user)
+      
         res
           .status(201)
-          .json({ message:"Welcome! Your account sucessfully registered", data:user,token })
+          .json({ message:"Welcome! Your account sucessfully registered", data:user })
       })
       .catch((err) => {
         res.status(500).json({ message: err });
