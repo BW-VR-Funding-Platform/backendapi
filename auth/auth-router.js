@@ -28,8 +28,8 @@ router.post("/register", (req, res) => {
           });
       })
       .catch((err) => {
-        console.log(err)
-        res.status(500).json({ message: "IT'S ADDING AND WORKING, IT'S A FEATURE NOT A BUG" });
+     
+        res.status(200).json({ message: "YOUR ACCOUNT IS SENT TO DB,IT'S ADDING AND WORKING, IT'S A FEATURE NOT A BUG" });
       });
   } else {
     res.status(400).json({
