@@ -76,17 +76,27 @@ router.put("/:id", (req, res) => {
     });
 });
 
+
 router.delete("/:id", (req, res) => {
-  const { id } = req.params;
-  model
-    .remove(id)
-    .then((res) =>
+  model.remove(req.params.id)
+    .then((num) => {
+      if (num === 1) {
+        res.status(204).json({ message: "This project was successfully deleted" }).end();
+      } else {
+        res.status(404).json({ message: "Something is strange" }).end();
+      }
+    })
+    .catch((err) => {
       res
-        .status(200)
-        .json({ message: "This project was successfully deleted", res })
-    )
-    .catch((err) => res.status(500).json({ error: 500, err: err }));
-}); // worked!
+        .status(500)
+        .json({ message: "There was an error", error: err.message });
+    });
+});
+//204 should return nothing
+// .del() will return a 1 on success -> make sure you invoke it :stuck_out_tongue:
+// 200 will return data
+// check your status codes!
+
 
 function checkRole(role) {
   return function (req, res, next) {

@@ -46,5 +46,9 @@ function update(changes,id) {
 
 //remove project from db
 function remove(id) {
-  return db("projects").where({id}).del();
+  return db("projects").where({id}).del(); //.del() sucessfull 
 }
+//204 should return nothing
+// .del() will return a 1 on success -> make sure you invoke it :stuck_out_tongue:
+// 200 will return data
+// check your status codes!
