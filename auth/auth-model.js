@@ -10,9 +10,10 @@ function find() {
     .select("user_id", "firstname", "lastname")
     .orderBy("user_id");
 }
+
 function add(users) {
   return db("users")
-    .insert(user)
+    .insert(user, "id")
     .then((id) => {
       return db("users").where({ id: id[0] }).first();
     })
