@@ -29,8 +29,6 @@ router.get("/:id", (req, res) => {
 });
 
 //UPDATE new project
-
-
 router.post('/', (req, res) =>{
   let newPro = req.body;
   model.insert(newPro).then(newPro=>{
@@ -87,7 +85,7 @@ router.delete("/:id", (req, res) => {
         .status(200)
         .json({ message: "This project was successfully deleted", res })
     )
-    .catch((err) => res.status(500).json({ error: 500, err }));
+    .catch((err) => res.status(500).json({ error: 500, err: err }));
 }); // worked!
 
 function checkRole(role) {

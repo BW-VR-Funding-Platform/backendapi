@@ -2,7 +2,7 @@
 
 ## Documentation
 
-Base URL for deployed API(updating...): https://bw-rw-funding.herokuapp.com/
+Base URL for deployed API: https://funding-platform-bw.herokuapp.com
 
 ## **Endpoints**
 
@@ -57,12 +57,11 @@ Base URL for deployed API(updating...): https://bw-rw-funding.herokuapp.com/
         "password": "$2a$08$Zvy5EH/BKN28kspTTkzLyeS6ikjuoKBA8NRgCNIHGGHWyF8HvnP1q",
         "role": 0
     },
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoyNSwiZmlyc3RuYW1lIjoiRXZpZSIsImxhc3RuYW1lIjoiTGV2aWUiLCJpYXQiOjE2MDMwNDg2OTEsImV4cCI6MTYwMzA5MTg5MX0.FQu8UVtAsLvhHr-vtj1w1gkfz9QGoLAxSGNYOwV_vxE"
 }
 
 ```
 
-### POST /api/auth/register
+### POST /api/auth/login
 
 ---Request body
 
@@ -111,43 +110,38 @@ Headers
 [
     {
         "id": 1,
-        "project_id": 1,
         "project_name": "Astro App - Translate Sign Language ",
         "project_founder": "Astrofolic",
         "project_description": "What do you write in a Astro project description",
-        "project_goal": "$10,000.00"
+        "project_goal": 10000.00
     },
     {
         "id": 2,
-        "project_id": 2,
         "project_name": "Stark App - Healthcare",
         "project_founder": "Molasses",
         "project_description": "What do you write in  Stark project description",
-        "project_goal": "$20,000.00"
+        "project_goal": 20000.00
     },
     {
         "id": 3,
-        "project_id": 3,
         "project_name": "Skyhawks App - Virtual Assistant ",
         "project_founder": "Dexstrose",
         "project_description": "What do you write in  Skyhawks project description",
-        "project_goal": "$30,00.00"
+        "project_goal": 3000.00
     },
     {
         "id": 4,
-        "project_id": 4,
         "project_name": "Project X App - Travel Vision ",
         "project_founder": "Iron",
         "project_description": "What do you write in Project X  project description",
-        "project_goal": "$35,00.00"
+        "project_goal": 3500.00
     },
     {
         "id": 5,
-        "project_id": 5,
         "project_name": "Cascade App- Virtual Shopping",
         "project_founder": "Benja",
         "project_description": "What do you write in Cascade project description ",
-        "project_goal": "$40,00.00"
+        "project_goal": 4000.00
     }
 ]
 ```
@@ -179,52 +173,43 @@ Headers
     }
 }
 ```
-## POST/api/projects (...is updating)
+## POST/api/projects 
 
 ---Request
 ```
+   {
+        "id": 6 ,
+        "project_name": "Anything",
+        "project_founder": "Anyone",
+        "project_description": "What do you write in YADAYADA project description Test",
+        "project_goal": 5800.00
+    }
 ```
 ---Return
 ```
-```
-
-## PUT/api/projects/:id
-
----Request
-
-```
-    {
-        "id": 3,
-        "project_id": 3,
-        "project_name": "Phoenix App  Solar Energy Test",
-        "project_founder": "Sophiet",
-        "project_description": "What do you write in Phoenix project description Test",
-        "project_goal": "$5,800.00"
+  {
+        "id": 6 ,
+        "project_name": "Anything",
+        "project_founder": "Anyone",
+        "project_description": "What do you write in YADAYADA project description Test",
+        "project_goal": 5800.00
     }
 ```
 
----Return 
 
-```
-{
-    "success": "Project information is updated",
-    "id": 3,
-    "project_id": 3,
-    "project_name": "Phoenix App  Solar Energy Test",
-    "project_founder": "Sophiet",
-    "project_description": "What do you write in Phoenix project description Test",
-    "project_goal": "$5,800.00",
-    "UpdatingInformation": 1
-}
-```
 
 ## DELETE/api/projects (...is updating)
 
 ---Request
-```
+``` 
+https://funding-platform-bw.herokuapp.com/api/projects/1
 ```
 ---Return
 ```
+{
+    "error": 500,
+    "err": {}
+}
 ```
 
 ## FUNDING DATABASE ENDPOINT
@@ -235,50 +220,46 @@ Headers
 
 ```
 {
-    "message": "This is funding information",
-    "res": [
-        {
-            "id": 1,
-            "funding_id": 1,
-            "project_id": 1,
-            "project_name": "Astro App - Translate Sign Language ",
-            "project_description": "What do you write in a Astro project description",
-            "project_raised": "$2,670.00"
-        },
-        {
-            "id": 2,
-            "funding_id": 2,
-            "project_id": 2,
-            "project_name": "Stark App - Healthcare",
-            "project_description": "What do you write in  Stark project description",
-            "project_raised": "$5,645.00"
-        },
-        {
-            "id": 3,
-            "funding_id": 3,
-            "project_id": 3,
-            "project_name": "Skyhawks App - Virtual Assistant ",
-            "project_description": "What do you write in  Skyhawks project description",
-            "project_raised": "$6,234.00"
-        },
-        {
-            "id": 4,
-            "funding_id": 4,
-            "project_id": 4,
-            "project_name": "Project X App - Travel Vision ",
-            "project_description": "What do you write in Project X  project description",
-            "project_raised": "$7,314.00"
-        },
-        {
-            "id": 5,
-            "funding_id": 5,
-            "project_id": 5,
-            "project_name": "Cascade App- Virtual Shopping",
-            "project_description": "What do you write in Cascade project description ",
-            "project_raised": "$8,285.00"
-        }
-    ]
+"message": "This is funding information",
+"res": [
+{
+"id": 1,
+"project_id": 1,
+"project_name": "Astro App - Translate Sign Language ",
+"project_description": "What do you write in a Astro project description",
+"project_raised": "26700.00"
+},
+{
+"id": 2,
+"project_id": 2,
+"project_name": "Stark App - Healthcare",
+"project_description": "What do you write in  Stark project description",
+"project_raised": "564500.00"
+},
+{
+"id": 3,
+"project_id": 3,
+"project_name": "Skyhawks App - Virtual Assistant ",
+"project_description": "What do you write in  Skyhawks project description",
+"project_raised": "6234.00"
+},
+{
+"id": 4,
+"project_id": 4,
+"project_name": "Project X App - Travel Vision ",
+"project_description": "What do you write in Project X  project description",
+"project_raised": "731400.00"
+},
+{
+"id": 5,
+"project_id": 5,
+"project_name": "Cascade App- Virtual Shopping",
+"project_description": "What do you write in Cascade project description ",
+"project_raised": "828500.00"
 }
+]
+}
+
 ```
 ### GET/api/funding/:id
 
@@ -308,7 +289,6 @@ https://funding-platform-bw.herokuapp.com/funding/1
 ```
 {
 "id": 1,
-"project_id": 1,
 "project_name": "Astro App - Translate Sign Language Editted ",
 "project_description": "What do you write in a Astro project description",
 "project_raised": 30000
@@ -320,7 +300,6 @@ https://funding-platform-bw.herokuapp.com/funding/1
 {
     "success": "Project information is updated",
     "id": 1,
-    "project_id": 1,
     "project_name": "Astro App - Translate Sign Language Editted ",
     "project_description": "What do you write in a Astro project description",
     "project_raised": 30000,
@@ -334,11 +313,10 @@ https://funding-platform-bw.herokuapp.com/funding/1
 ```
 projects = [   {
       id: 1,
-      project_id: 1,
       project_name: "Astro App - Translate Sign Language ",
       project_founder: "Astrofolic",
       project_description: "What do you write in a Astro project description",
-      project_goal: "$10,000.00",
+      project_goal: 10000.00
     },
 ]
 
@@ -347,12 +325,10 @@ projects = [   {
 ```
 funding = [
     {
-    id: 1,
-      funding_id: 1,
-      project_id: 1,
+      id: 1,
       project_name: "Astro App - Translate Sign Language ",
       project_description: "What do you write in a Astro project description",
-      project_raised: "$2,670.00"
+      project_raised: 2670.00
     }
  ]
 
