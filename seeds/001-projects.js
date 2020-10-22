@@ -9,7 +9,6 @@ exports.seed = function (knex) {
     },
     {
       id: 2,
-
       project_name: "Stark App - Healthcare",
       project_founder: "Molasses",
       project_description: "What do you write in  Stark project description",
@@ -17,7 +16,6 @@ exports.seed = function (knex) {
     },
     {
       id: 3,
-
       project_name: "Skyhawks App - Virtual Assistant ",
       project_founder: "Dexstrose",
       project_description: "What do you write in  Skyhawks project description",
@@ -25,7 +23,6 @@ exports.seed = function (knex) {
     },
     {
       id: 4,
-
       project_name: "Project X App - Travel Vision ",
       project_founder: "Iron",
       project_description:
@@ -34,7 +31,6 @@ exports.seed = function (knex) {
     },
     {
       id: 5,
-
       project_name: "Cascade App- Virtual Shopping",
       project_founder: "Benja",
       project_description: "What do you write in Cascade project description ",
